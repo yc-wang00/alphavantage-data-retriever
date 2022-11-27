@@ -1,0 +1,9 @@
+
+__pycache__/
+
+# not pushing data to repository
+/data/
+
+# not push personal setting and ipynb
+*.ipynb
+setting.json
