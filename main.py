@@ -32,10 +32,10 @@ def generate_month_list():
     return arr
 
 
-def get_stock_data_per_month(month, apikey, stock_symbol):
+def get_stock_data_per_month(month, apikey, interval, stock_symbol):
     """retrieve stock data per month"""
 
-    CSV_URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol={stock_symbol}&interval=5min&slice={month}&apikey={apikey}"
+    CSV_URL = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol={stock_symbol}&interval={interval}&slice={month}&apikey={apikey}"
 
     with requests.Session() as s:
         download = s.get(CSV_URL)
@@ -50,7 +50,7 @@ def get_stock_data(stock_symbol, month_list, apikey):
     """retrieve a full 5 minutes data(2 years) from a stock, save to csv files"""
 
     for i, month in enumerate(month_list):
-        data = get_stock_data_per_month(month=month, apikey=apikey, stock_symbol=stock_symbol)
+        data = get_stock_data_per_month(month=month, apikey=apikey, interval="5min", stock_symbol=stock_symbol)
 
         df = pd.DataFrame(data[1:], columns=data[0])
 
