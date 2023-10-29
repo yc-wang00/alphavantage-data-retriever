@@ -6,7 +6,8 @@ import sys
 import tempfile
 from pathlib import Path
 from typing import Dict, Optional, Union, Any
-import os 
+import os
+
 # from loguru import logger
 
 
@@ -32,10 +33,10 @@ class ConfManager:
     data_stock_raw_dir: Path = f"{file_path}/data/stock_raw/"
 
     list_symbol_csv_dir: Path = os.path.join(data_dir, "list_symbol_raw.csv")
-    
+
     Path(data_dir).mkdir(parents=True, exist_ok=True)
     Path(data_stock_raw_dir).mkdir(parents=True, exist_ok=True)
-    
+
 
 # ─────────────────────────────────────────────── ConfManager instance ─────────────────────────────────────────────── #
 
